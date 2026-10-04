@@ -2,8 +2,8 @@ module "ec2" {
   source = "git::https://github.com/IntotheCloudz-bit/terraform-ec2-modules.git//ec2"
 
   key_name           = "KEY-Pair_Cloudz"
-  subnet_id          = module.vpc.private_subnet_ids[0]
-  security_group_ids = [module.vpc.ec2_security_group_id]
+  subnet_id = module.vpc.public_subnet_ids[0]
+  security_group_ids = [module.web_sg.security_group_id]
   name               = "migration-ec2"
 }
 
